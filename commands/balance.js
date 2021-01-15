@@ -33,9 +33,15 @@ module.exports = {
 	name: 'balance',
 	description: 'View your current balance.',
 	usage:`\`${prefix}balance\``,
-	execute(message) {
+	execute(message, args) {
+		const decision = args[0],
 		coins.add(message.author.id, 1);
 		const target = message.mentions.users.first() || message.author;
-		message.author.send(`${target.tag} has ${coins.getBalance(target.id)}.\n`);
-			 },
-	};
+		if (decision === "public" || decision === "Public") {
+			message.channel.send(`${target.tag} has ${coins.getBalance(target.id)}.\n`); 
+		}
+		else {
+			message.author.send(`${target.tag} has ${coins.getBalance(target.id)}.\n`);
+		}
+	},
+};
