@@ -36,6 +36,6 @@ module.exports = {
 	execute(message) {
 		coins.add(message.author.id, 1);
 		const target = message.mentions.users.first() || message.author;
-		message.channel.send(`${target.tag} has ${coins.getBalance(target.id)}.\n`);
+		message.author.send(`${target.tag} has ${coins.getBalance(target.id)}.\n`);
 			 },
 	};
