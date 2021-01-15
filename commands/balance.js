@@ -34,7 +34,7 @@ module.exports = {
 	description: 'View your current balance.',
 	usage:`\`${prefix}balance\``,
 	execute(message, args) {
-		const decision = args[0],
+		const decision = args[0];
 		coins.add(message.author.id, 1);
 		const target = message.mentions.users.first() || message.author;
 		if (decision === "public" || decision === "Public") {
