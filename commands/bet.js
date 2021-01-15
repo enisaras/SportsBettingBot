@@ -26,7 +26,7 @@ module.exports = {
         if(coins < 0) {
             message.reply('The amount of coins in your bet is invalid. Please, submit a coin amount > 0 to !bet.');
         }
-        if(team_names.includes(team_name) && bet_types.includes(bet_types) && coins > 0){
+        if(team_names.includes(team_name) && bet_types.includes(bet_type) && coins > 0){
             message.reply(`Your bet of ${coins} coins has been added to bet: ${bet_type}`); 
         }
     }, 
