@@ -20,6 +20,9 @@ module.exports = {
         if(!team_names.includes(team_name)) {
             message.reply('Your team name is invalid. Please, submit a valid team name to !bet.');
         }
+        if(!bet_type.includes(bet_type)) {
+            message.reply('Your bet type is invalid. Please, submit a valid bet type to !bet.'); 
+        }
         if(coins < 0) {
             message.reply('The amount of coins in your bet is invalid. Please, submit a coin amount > 0 to !bet.');
         }
