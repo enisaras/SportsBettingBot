@@ -1,4 +1,4 @@
-//Add required modues etc.
+//Add required modules etc.
 const fs = require('fs');
 const {Users} = require('./dbObjects.js');
 const Discord = require('discord.js');

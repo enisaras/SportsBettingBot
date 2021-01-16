@@ -7,19 +7,21 @@ var profit = -1;
 const team_names = ["Giants", "Jets", "Ravens", "Rams", "Packers"]; 
 
 const bet_types = ["Totals", "Money Line", "Spread"];
+/*
 const calculateMoneyLine = (stake, odds) => {
     //moneyline payout for positive and negative odds:
-    //TODO:add if statement to check if odds pos or neg
-    if(data['sites']['odds']['h2h'][0].Math.sign() == 1){
+    //TODO:change these if statements to work with the json
+    if(data.odds(['h2h'])[0].Math.sign() == 1){
         profit = stake * (odds/100);}
-    else if(data['sites']['odds']['h2h'][1].Math.sign() == 1){
+    else if(data['sites']['odds']['h2h'][1].Math.sign() == 1)
         profit = stake / (odds/100);
-    }
-    else{
+    
+    else
         //Needs to message "something went terribly wrong."
         return;
     }
 }
+*/
 module.exports = {
     name: 'bet', 
     description: 'Make a bet', 
