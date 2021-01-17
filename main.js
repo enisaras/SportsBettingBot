@@ -19,14 +19,13 @@ for (const file of commandFiles) {
 client.once('ready', async () => {
 	const storedBalances = await Users.findAll();
 	storedBalances.forEach(b => currency.set(b.user_id, b));
-	console.log(`Logged in as ${client.user.tag}!`);
+	console.log(`Logged in as ${client.user.id}!`);
 });
 client.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
-	const command = client.commands.get(commandName)
-	
+	const command = client.commands.get(commandName);
 	if(!client.commands.has(commandName)) return;
 	try {
 		command.execute(message, args);
