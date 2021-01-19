@@ -3,22 +3,36 @@ following the format: !bet {team} {bet_type} {coins}
 */
 const { prefix } = require('../config.json'); 
 const data = require('../example-odds.json');
-var profit = -1;
-const team_names = ["Giants", "Jets", "Ravens", "Rams", "Packers"]; 
-
+const team_names = ["Giants", "Jets", "Ravens", "Rams", "Packers"];
 const bet_types = ["Totals", "Money Line", "Spread"];
 const calculateMoneyLine = (stake, odds) => {
     //moneyline payout for positive and negative odds:
-    //TODO:add if statement to check if odds pos or neg
-    if(data['sites']['odds']['h2h'][0].Math.sign() == 1){
-        profit = stake * (odds/100);}
-    else if(data['sites']['odds']['h2h'][1].Math.sign() == 1){
+    if(odds > 0){
+        profit = stake * (odds/100);
+        return profit;}
+    else if(odds < 0){
         profit = stake / (odds/100);
+        return 0 - profit;
     }
     else{
         //Needs to message "something went terribly wrong."
         return;
     }
+}
+const calculateTotals = (stake, odds, over, totalPoints) => {
+  //This betting odds take two options, over/under
+  var profit;
+  if(totalPoints > over){
+    profit = stake / (odds/100);
+    return Math.ceil(-profit);
+  }
+  else if(totalPoints < over){
+    profit = stake / (odds/100);
+    return Math.ceil(-profit);
+  }
+  else{
+    return;
+  }
 }
 module.exports = {
     name: 'bet', 
@@ -26,6 +40,7 @@ module.exports = {
     arguments: 'Add a team, bet type, and coins to make a bet.',
     usage: `\`${prefix}bet [team name] [bet type] [coins]\``,
     execute(message, args) {
+        var profit = -1;
         const team_name = args[0];
         const bet_type = args[1];
         const coins = args[2];
@@ -40,8 +55,15 @@ module.exports = {
             message.reply('The amount of coins in your bet is invalid. Please, submit a coin amount over 0 to bet.');
         }
         if(team_names.includes(team_name) && bet_types.includes(bet_type) && coins > 0){
-            message.reply(`Your bet of ${coins} coins has been added to bet: ${bet_type}`);
-            //message.reply(`test: ${calculateMoneyLine(coins,data['sites']['odds']['h2h'][0])}`) 
+            message.reply(`Your bet of ${coins} coins has been added to bet: ${bet_type}`)
+            if(args[1] === bet_types[0]){
+              profit = calculateTotals(coins, -110, 52, 53)
+              message.reply(`Expected profit: ${profit}`);
+            }  
+            else if(args[1] === bet_types[1]){
+              profit = calculateMoneyLine(coins, -200);
+              message.reply(`Expected profit: ${profit}`);}
+             
         }
     }, 
 };
