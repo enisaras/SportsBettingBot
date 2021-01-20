@@ -18,7 +18,6 @@ for (const file of commandFiles) {
 client.once('ready', async () => {
 	console.log(`Logged in as ${client.user.id}!`);
 	console.log(`Logged in as ${client.user.tag}!`);
-  console.log(process.env.REPLIT_DB_URL)
 });
 client.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
