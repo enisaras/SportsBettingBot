@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "dependencies": {
     "discord.js": "^12.5.1",
     "sequelize": "^6.3.5"
@@ -7,7 +6,6 @@
   "devDependencies": {
     "sqlite3": "^5.0.1"
   }
-=======
   "name": "SportsBettingBot",
   "version": "1.0.0",
   "description": "DiscordBettingBot is currently under development.",
@@ -33,5 +31,4 @@
     "url": "https://github.com/enisaras/SportsBettingBot/issues"
   },
   "homepage": "https://github.com/enisaras/SportsBettingBot#readme"
->>>>>>> 5c301899a5529394965c9e4877967ba24a700697
 }
