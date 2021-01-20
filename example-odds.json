@@ -11,7 +11,8 @@
           "site_nice": "FanDuel",
           "last_update": "2020-10-07T09:13:27Z",
           "odds": {"h2h": [188,-225],
-                   "spread":[3, -3] }
+                   "spread":[3, -3], 
+                   "totals": 51.5}
       },
       {
           "site_key": "bookmaker",
