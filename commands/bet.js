@@ -3,37 +3,10 @@ following the format: !bet {team} {bet_type} {coins}
 */
 const { prefix } = require('../config.json'); 
 const data = require('../example-odds.json');
+const functions = require('../functions/odd-functions.js')
 const team_names = ["Giants", "Jets", "Ravens", "Rams", "Packers"];
 const bet_types = ["Totals", "Money Line", "Spread"];
-const calculateMoneyLine = (stake, odds) => {
-    //moneyline payout for positive and negative odds:
-    if(odds > 0){
-        profit = stake * (odds/100);
-        return profit;}
-    else if(odds < 0){
-        profit = stake / (odds/100);
-        return 0 - profit;
-    }
-    else{
-        //Needs to message "something went terribly wrong."
-        return;
-    }
-}
-const calculateTotals = (stake, odds, over, totalPoints) => {
-  //This betting odds take two options, over/under
-  var profit;
-  if(totalPoints > over){
-    profit = stake / (odds/100);
-    return Math.ceil(-profit);
-  }
-  else if(totalPoints < over){
-    profit = stake / (odds/100);
-    return Math.ceil(-profit);
-  }
-  else{
-    return;
-  }
-}
+
 module.exports = {
     name: 'bet', 
     description: 'Make a bet', 
@@ -57,12 +30,17 @@ module.exports = {
         if(team_names.includes(team_name) && bet_types.includes(bet_type) && coins > 0){
             message.reply(`Your bet of ${coins} coins has been added to bet: ${bet_type}`)
             if(args[1] === bet_types[0]){
-              profit = calculateTotals(coins, -110, 52, 53)
+              profit = functions.calculateTotals(coins, -110, 52, 53)
               message.reply(`Expected profit: ${profit}`);
             }  
             else if(args[1] === bet_types[1]){
-              profit = calculateMoneyLine(coins, -200);
-              message.reply(`Expected profit: ${profit}`);}
+              profit = functions.calculateMoneyLine(coins, -200);
+              message.reply(`Expected profit: ${profit}`);
+            }
+            else if(args[1] === bet_types[2]){
+              profit = functions.calculateSpreads(coins, -150, 3, 4);
+              message.reply(`Expected profit: ${profit}`);
+            }
              
         }
     }, 
