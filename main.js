@@ -1,6 +1,5 @@
 //Add required modules etc.
 const fs = require('fs');
-//const {Users} = require('./dbObjects.js');
 const Discord = require('discord.js');
 const {prefix, token} = require('./config.json');
 //Discord objects
@@ -16,8 +15,7 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', async () => {
-	console.log(`Logged in as ${client.user.id}!`);
-	console.log(`Logged in as ${client.user.tag}!`);
+	console.log(`Logged in as ${client.user.id}`);
 });
 client.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;

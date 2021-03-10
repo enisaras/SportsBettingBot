@@ -3,7 +3,7 @@ This command will show the user what bets they can make and take an optional par
 "team name" to show a bet from a specific team.
 */
 const {prefix} = require('../config.json');
-const odds = require('../example-odds.json');
+//const odds = require('../example-odds.json');
 module.exports = {
 	name: 'view',
 	description: 'View all the bets available this week',
