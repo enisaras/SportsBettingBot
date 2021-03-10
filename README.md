@@ -1,5 +1,5 @@
 # SportsBettingBot
-DiscordBettingBot is currently under development.
+SportsBettingBot is currently under development.
 
 ## Installation
 1)After you clone the repository cd into SportsBettingBot.\
