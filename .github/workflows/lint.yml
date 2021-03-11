@@ -1,0 +1,6 @@
+name: Lint
+on: [push, pull_request]
+jobs:
+     lint:
+       name: Lint Action
+       uses: wearerequired/lint-action@v1.8.0
